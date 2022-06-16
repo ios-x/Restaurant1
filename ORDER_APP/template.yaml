@@ -98,6 +98,7 @@ Resources:
           Resource:
             - !GetAtt GetOrders.Arn
             - !GetAtt PostOrders.Arn
+            - !GetAtt UpdateOrder.Arn
       Roles: 
         - Ref: "ApiGwExecutionRole"
 
@@ -115,6 +116,29 @@ Resources:
           - Effect: Allow
             Action:
               - dynamodb:PutItem
+            Resource:
+              - !Sub 
+                - 'arn:aws:dynamodb:*:*:table/${Table}'
+                - { Table: !Ref OrderTable }
+          - Effect: Allow
+            Action:
+              - logs:*
+            Resource:
+              - "*"    
+  UpdateOrder:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: functions/update-order/
+      Handler: app.updateOrder
+      Runtime: nodejs14.x
+      Environment:
+        Variables:
+          ORDER_TABLE: !Ref OrderTable
+      Policies:
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:UpdateItem
             Resource:
               - !Sub 
                 - 'arn:aws:dynamodb:*:*:table/${Table}'
@@ -144,3 +168,7 @@ Outputs:
   PostOrders:
     Description: "PostOrders Lambda Function ARN"
     Value: !GetAtt PostOrders.Arn
+
+  UpdateOrder:
+    Description: "UpdateOrder Lambda Function ARN"
+    Value: !GetAtt UpdateOrder.Arn

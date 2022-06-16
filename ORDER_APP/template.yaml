@@ -98,7 +98,7 @@ Resources:
             - !GetAtt PostOrders.Arn
             - !GetAtt UpdateOrder.Arn
             - !GetAtt DeleteOrder.Arn
-            - !GetAtt GetSingleOrder.Arn
+            
       Roles: 
         - Ref: "ApiGwExecutionRole"
 
@@ -172,30 +172,6 @@ Resources:
               - logs:*
             Resource:
               - "*"    
-  GetSingleOrder:
-    Type: AWS::Serverless::Function 
-    Properties:
-      CodeUri: functions/single-order/
-      Handler: app.getOrderById
-      Runtime: nodejs14.x
-      Environment:
-        Variables:
-          ORDER_TABLE: !Ref OrderTable
-      Policies:
-        Statement:
-          - Effect: Allow
-            Action:
-              - dynamodb:GetItem
-            Resource:
-              - !Sub 
-                - 'arn:aws:dynamodb:*:*:table/${Table}'
-                - { Table: !Ref OrderTable }
-          - Effect: Allow
-            Action:
-              - logs:*
-            Resource:
-              - "*"    
-
 
 
 Outputs:
@@ -224,6 +200,3 @@ Outputs:
     Description: "DeleteOrder Lambda Function ARN"
     Value: !GetAtt DeleteOrder.Arn
 
-  GetSingleOrder:
-    Description: "GetSingleOrder Lambda Function ARN"
-    Value: !GetAtt GetSingleOrder.Arn

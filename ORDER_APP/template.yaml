@@ -99,6 +99,7 @@ Resources:
             - !GetAtt GetOrders.Arn
             - !GetAtt PostOrders.Arn
             - !GetAtt UpdateOrder.Arn
+            - !GetAtt DeleteOrder.Arn
       Roles: 
         - Ref: "ApiGwExecutionRole"
 
@@ -149,6 +150,30 @@ Resources:
             Resource:
               - "*"    
 
+  DeleteOrder:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: functions/delete-order/
+      Handler: app.deleteOrder
+      Runtime: nodejs14.x
+      Environment:
+        Variables:
+          ORDER_TABLE: !Ref OrderTable
+      Policies:
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:DeleteItem
+            Resource:
+              - !Sub 
+                - 'arn:aws:dynamodb:*:*:table/${Table}'
+                - { Table: !Ref OrderTable }
+          - Effect: Allow
+            Action:
+              - logs:*
+            Resource:
+              - "*"    
+
 
 
 Outputs:
@@ -172,3 +197,7 @@ Outputs:
   UpdateOrder:
     Description: "UpdateOrder Lambda Function ARN"
     Value: !GetAtt UpdateOrder.Arn
+
+  DeleteOrder:
+    Description: "DeleteOrder Lambda Function ARN"
+    Value: !GetAtt DeleteOrder.Arn

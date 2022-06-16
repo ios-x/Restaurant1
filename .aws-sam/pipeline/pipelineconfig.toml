@@ -7,17 +7,17 @@ pipeline_user = "arn:aws:iam::086152674311:user/mandela"
 [dev]
 [dev.pipeline_bootstrap]
 [dev.pipeline_bootstrap.parameters]
-pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-1FZOO1ULWPIDK"
-cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-1JIO7LGTXNGU2"
-artifacts_bucket = "challenge5dev"
+pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-3XKOHECWZ1EJ"
+cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-51XVD1BW423I"
+artifacts_bucket = "aws-sam-cli-managed-dev-pipeline-artifactsbucket-1pe3kemefwlvu"
 image_repository = ""
-region = "us-east-2"
+region = "us-east-1"
 
 [prod]
 [prod.pipeline_bootstrap]
 [prod.pipeline_bootstrap.parameters]
-pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-1FZOO1ULWPIDK"
-cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-1JIO7LGTXNGU2"
-artifacts_bucket = "challenge5prod"
+pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-prod-pip-PipelineExecutionRole-51PQGH2O9H79"
+cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-prod-CloudFormationExecutionR-YKEUONH7ZSYO"
+artifacts_bucket = "aws-sam-cli-managed-prod-pipeline-artifactsbucket-17h79jimggt03"
 image_repository = ""
-region = "us-west-1"
+region = "us-east-2"

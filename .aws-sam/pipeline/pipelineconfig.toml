@@ -7,8 +7,17 @@ pipeline_user = "arn:aws:iam::086152674311:user/mandela"
 [dev]
 [dev.pipeline_bootstrap]
 [dev.pipeline_bootstrap.parameters]
-pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-11SNOEWX4ICLB"
-cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-O6OFBQ94VVYU"
+pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-19JE6YWZK5YKW"
+cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-T0AEOR7GLE18"
 artifacts_bucket = "challenge5dev"
 image_repository = ""
 region = "us-east-2"
+
+[prod]
+[prod.pipeline_bootstrap]
+[prod.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-19JE6YWZK5YKW"
+cloudformation_execution_role = "arn:aws:iam::086152674311:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-T0AEOR7GLE18"
+artifacts_bucket = "challenge5dev"
+image_repository = ""
+region = "us-west-1"

@@ -28,7 +28,7 @@ exports.postOrders = async (event) => {
     
     // The item contains fully order Item. 
     let item = {
-        user_id : "static_user",   
+        user_id : "Mandela",   
         id: uuid.v4(),             
         name: parsedBody.name, 
         restaurantId: parsedBody.restaurantId, 

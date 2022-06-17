@@ -30,12 +30,11 @@ exports.updateOrder = async (event) => {
     let parsedBody = JSON.parse(body);  // It parses the JSON payload to java script object
 
     let item = {
-        user_id : "static_user",   
+        user_id : "Mandela",   
         id: orderId
     }
 
     // The DynamoDB Update expression requires following parameters
-    // We will be updating quantity or restaurantId or name
     // We are adding updatedAt parameter to Dynamodb in each update expression
     let params = {
         TableName : tableName,

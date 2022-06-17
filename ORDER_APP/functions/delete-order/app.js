@@ -9,7 +9,7 @@ exports.deleteOrder = async (event) => {
     const orderId = event.pathParameters.orderId; // It gets the OrderId from parameter
 
     let item = {
-        user_id : "static_user",   
+        user_id : "Mandela",   
         id: orderId
     }
 

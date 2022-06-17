@@ -30,7 +30,7 @@ exports.updateOrder = async (event) => {
     let parsedBody = JSON.parse(body);  // It parses the JSON payload to java script object
 
     let item = {
-        user_id : "static_user",   
+        user_id : "Mandela",   
         id: orderId
     }
 
